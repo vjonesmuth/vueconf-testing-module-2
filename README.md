@@ -158,3 +158,45 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Create test: `has a submit button`
     - Mount `FormLogin` component
     - Expect that the template contains a button with the type of `submit`
+
+# [Login Form 2 (Stubs, Mocks, and Spies)](https://www.notion.so/Login-Form-2-Stubs-Mocks-and-Spies-dd579c63a9994c0bba93cc8f30de6b53)
+
+# 9.1 | 15 minutes
+
+- Create async test: `it shows api errors`
+    - Import `auth` in top of test file: `import {auth} from '../../src/api`
+    - Stub the `login` property of `auth`. Return a rejected `Promise`
+    - Set form data to valid `email` and `password`
+    - Invoke the `login` method
+    - ~~Expect that the `hasError` data property is `true`~~
+    - Expect that the api error is displayed in the template
+    - Restore mock to original implementation
+
+# 9.2 | 10 minutes
+
+- Create async test: `shows validation error if missing inputs and submitting`
+    - Mount the `FormLogin` component
+    - Invoke the `login` method
+    - Expect the template to contain `Please fill in both fields.`
+
+> *Tip: Catch and mute the thrown exception*
+
+# 9.3 | 5 minutes
+
+- Create async test: `doesn't hit API endpoint when form data are invalid`
+    - Mount the `FormLogin` component
+    - Invoke the `login` method with invalid data
+    - Expect that `auth.login()` is not called
+
+# [Login Form 3 (Mock Component Dependencies)](https://www.notion.so/Login-Form-3-Mock-Component-Dependencies-54e62a4fbedd422f88298a170383838b)
+
+# 10 | 20 minutes
+
+- Create async test: `redirects on successful login`
+    - Stub `auth.login` and return a resolved `Promise`
+    - Create a `$router` mock, that has an empty `push` method.
+    - Create a spy that spies on the `push` method
+    - Mount the component with the mocked dependency
+    - Set valid email and password to `form` data
+    - invoke the `login` method
+    - Expect spy to have been called with `{name: 'protected'}`

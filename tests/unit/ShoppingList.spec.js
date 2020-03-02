@@ -24,6 +24,7 @@ describe('Shopping List', () => {
     };
   })
 
+  // 7.2
   it('renders name in template', () => {
     const wrapper = mount(ShoppingList, {
       propsData: {
@@ -34,11 +35,13 @@ describe('Shopping List', () => {
     expect(wrapper.html()).toContain('My Collectibles');
   });
 
+  // 7.3
   it('is empty by default', () => {
     const wrapper = mount(ShoppingList);
     expect(wrapper.vm.items).toHaveLength(0);
   });
 
+  // 7.3  
   it('can add item', () => {
     const wrapper = mount(ShoppingList);
     
@@ -50,6 +53,7 @@ describe('Shopping List', () => {
     );
   });
 
+  // 7.4
   it('can remove item', () => {
     const wrapper = mount(ShoppingList);
 
@@ -59,6 +63,7 @@ describe('Shopping List', () => {
     expect(wrapper.vm.items).not.toContain(itemObj);
   });
 
+  // 7.5
   it('can toggle item', () => {
     const wrapper = mount(ShoppingList);
     
@@ -71,6 +76,7 @@ describe('Shopping List', () => {
     expect(wrapper.vm.items).toContainEqual(itemObj);
   });
 
+  // 7.6
   it('counts remaining items that are not bought', () => {
     const wrapper = mount(ShoppingList);
     wrapper.setData({ items: [itemObj, itemObj2] });
