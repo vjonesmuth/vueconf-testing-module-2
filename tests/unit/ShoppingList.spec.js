@@ -36,7 +36,7 @@ describe('Shopping List', () => {
 
   it('is empty by default', () => {
     const wrapper = mount(ShoppingList);
-    expect(wrapper.vm.items).toEqual([]);
+    expect(wrapper.vm.items).toHaveLength(0);
   });
 
   it('can add item', () => {
@@ -45,7 +45,9 @@ describe('Shopping List', () => {
     wrapper.setData({ newItem: itemName });
     wrapper.vm.add();
 
-    expect(wrapper.vm.items).toContainEqual(itemObj);
+    expect(wrapper.vm.items).toContainEqual(
+      expect.objectContaining({ name: itemName })
+    );
   });
 
   it('can remove item', () => {
