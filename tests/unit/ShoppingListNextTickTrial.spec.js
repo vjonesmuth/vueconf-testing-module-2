@@ -1,29 +1,11 @@
 import { mount } from '@vue/test-utils'
 import ShoppingList from '../../src/components/ShoppingList.vue';
 
-let itemName,
-  itemObj,
-  itemObjBought,
-  itemObj2,
-  wrapper;
+let wrapper;
 
 describe('Shopping List', () => {
 
   beforeEach(() => {
-    itemName = 'Mona Lisa'; 
-    itemObj = {
-      'bought': false,
-      'name': itemName,
-    };
-    itemObjBought = {
-      'bought': true,
-      'name': itemName,
-    };
-    itemObj2 = {
-      'bought': true,
-      'name': 'Phil Lisa',
-    };
-
     wrapper = mount(ShoppingList);
   })
 
