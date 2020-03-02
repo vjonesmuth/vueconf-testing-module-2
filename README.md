@@ -97,3 +97,64 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - Expect that the `remainingItems` is equal to items that are not bought
     - Change the `bought` state of one of the items
     - Expect that the `remainingItems` is equal to items that are not bought
+
+
+# [Login Form](https://www.notion.so/Login-Form-8d13aba5a6574bc58dddcf8c3ec81374)
+> Show and Demo the form
+
+- In your projects directory, clone [this repository](https://github.com/rahaug/testing-workshop-boilerplate) and install the dependencies (if you don't have it)
+
+    git clone https://github.com/rahaug/testing-workshop-boilerplate
+    cd testing-workshop-boilerplate
+    yarn
+
+**A | 5 minutes**
+
+- create a new `FormLogin.spec.js` file in the `tests/unit` directory
+- create test: `sets email from prop`
+    - import the `FormLogin` component and mount it with an `email` prop.
+    - expect that `form.email` is equal to the `email` prop that was passed in.
+
+**B | 5 minutes**
+
+- create test: `is not valid with empty email and password`
+    - Mount `FormLogin` component
+    - expect that the `isValid` computed property is falsy when no email or password is given
+
+**~~C | 5 minutes~~**
+
+- create test: `is not valid with empty password`
+    - Mount `FormLogin` component
+    - set `form.email` data property to a valid email
+    - expect that the `isValid` computed property is falsy
+
+**D | 5 minutes**
+
+- Create test: `is valid with email and password`
+    - Mount `FormLogin` component
+    - Assign the `form` data a valid email and password (any password)
+    - Expect that the `isValid` computed property is truthy
+
+**E | 10 minutes**
+
+- create test: `input fields are bound to form data`
+    - Mount `FormLogin` component
+    - Find and set the email input field to a valid email
+    - Find and set the password input field to a valid password (any password)
+    - Expect that the `form` data contain email and password
+
+**F | 5 minutes**
+
+- Create test: `should render validation when dirty and invalid`
+    - Mount `FormLogin` component
+    - Set the `isDirty` data property to true
+    - Make sure the form data is invalid
+    - Expect the template to contain a “Please fill in both fields.” string
+
+> Tip: Remember to trigger the next render with wrapper.vm.$nextTick()
+
+**G | 5 minutes**
+
+- Create test: `has a submit button`
+    - Mount `FormLogin` component
+    - Expect that the template contains a button with the type of `submit`
