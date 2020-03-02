@@ -9,7 +9,8 @@ describe('Shopping List', () => {
   beforeEach(() => {
     validEmail = 'foobar@example.com';
     validPassword = 'password';
-  })
+  });
+
   it('sets email from prop', () => {
     const wrapper = mount(FormLogin, {
       propsData: {
@@ -49,6 +50,7 @@ describe('Shopping List', () => {
   it('input fields are bound to form data', () => {
     const wrapper = mount(FormLogin);
 
+    // setValue() triggers the input element so we don't need to do it explicitly.
     wrapper.find('input[type=email]').setValue(validEmail);
     wrapper.find('input[type=password]').setValue(validPassword);
 
