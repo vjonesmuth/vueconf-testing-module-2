@@ -1,12 +1,10 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import VueRouter from 'vue-router'
+import router from '../../src/router/index';
 
 import FormLogin from '../../src/components/FormLogin.vue';
 import { auth } from '../../src/api';
 
 const localVue = createLocalVue()
-localVue.use(VueRouter)
-const router = new VueRouter()
 
 let validEmail,
   validPassword;
@@ -92,7 +90,7 @@ describe('Shopping List', () => {
   // 9.1
   it('shows api errors', async () => {
     const wrapper = mount(FormLogin);
-    auth.login = jest.fn(() => Promise.reject('Something went wrong'))
+    auth.login = jest.fn(() => Promise.reject('Something went wrong'));
 
     wrapper.setData({ form: {
       email: validEmail,
@@ -133,10 +131,12 @@ describe('Shopping List', () => {
   it('redirects on successful login', async () => {
     const wrapper = mount(FormLogin, {
       localVue,
-      router
+      router,
     });
 
     auth.login = jest.fn(() => Promise.resolve());
+
+    router.push = jest.fn(() => {});
     const spy = jest.spyOn(router, 'push');
 
     wrapper.setData({ form: {
@@ -145,6 +145,7 @@ describe('Shopping List', () => {
     }});
 
     await wrapper.vm.login();
+    await wrapper.vm.$nextTick();
 
     expect(spy).toHaveBeenCalledWith({ name: 'protected' });
     spy.mockRestore();
