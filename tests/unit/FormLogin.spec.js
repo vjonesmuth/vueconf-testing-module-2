@@ -49,13 +49,8 @@ describe('Shopping List', () => {
   it('input fields are bound to form data', () => {
     const wrapper = mount(FormLogin);
 
-    const emailInput = wrapper.find('input[type=email]');
-    emailInput.element.value = validEmail;
-    emailInput.trigger('input');
-
-    const passwordInput = wrapper.find('input[type=password]')
-    passwordInput.element.value = validPassword;
-    passwordInput.trigger('input');
+    wrapper.find('input[type=email]').setValue(validEmail);
+    wrapper.find('input[type=password]').setValue(validPassword);
 
     expect(wrapper.vm.form).toStrictEqual({
       email: validEmail,
