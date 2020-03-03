@@ -200,3 +200,25 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - Set valid email and password to `form` data
     - invoke the `login` method
     - Expect spy to have been called with `{name: 'protected'}`
+
+
+# [Component Lifecycle](https://www.notion.so/Component-Lifecycle-03c4955adaa64aa1a37d63f8c05d2d39)
+
+During these exercises you should use the documentation extensively when you don’t remember or know exactly what to do. Inspect the component to get inspiration on how to test it.
+
+# 11.1 | 10 minutes
+
+- create a test that ensures that the `interval` data is defined after the component is mounted
+
+# 11.2 | 10 minutes
+
+- test that the `counter` data increases by 1 for every passed second
+
+# 11.3 | 15 minutes
+
+- test that the component self-destructs when `counter` gets equal to the `timer`
+- test that the `interval` is cleared when the component self-destructs
+
+# 11.4 | 10 minutes
+
+- test that the component emits a `deleted` custom event when destroyed.
