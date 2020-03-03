@@ -1,5 +1,7 @@
 # Testing Vue Components
 
+* https://vue-test-utils.vuejs.org/guides
+
 This repository holds the boilerplate for the exercises of module 2.
 
 Module 2 covers testing Vue.js components with Vue Test Utils.
