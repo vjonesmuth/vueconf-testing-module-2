@@ -1,6 +1,7 @@
 # Testing Vue Components
 
 * https://vue-test-utils.vuejs.org/guides
+* https://github.com/rahaug/testing-workshop-boilerplate
 
 This repository holds the boilerplate for the exercises of module 2.
 
